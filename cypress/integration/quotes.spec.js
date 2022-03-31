@@ -31,5 +31,24 @@ describe("Quotes App", () => {
    textInput().should("exist");
    foobarInput().should("not.exist");
    authorInput().should("exist");
+   submitBtn().should("exist");
+   cancelBtn().should("exist");
+
+   cy.contains("Submit Quote").should("exist");
+   cy.contains(/submit quote/i).should("exist");
+ })
+
+ describe("Filling out the inputs and cancelling", () => {
+   it("can navigate to the site", () => {
+     cy.url().should("include", "localhost");
+   })
+
+   it("submit button starts out disabled", () => {
+     submitBtn().should("be.disabled");
+   })
+
+   it("can type in the inputs", () => {
+     
+   })
  })
 })
