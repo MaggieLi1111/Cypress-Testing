@@ -48,7 +48,29 @@ describe("Quotes App", () => {
    })
 
    it("can type in the inputs", () => {
-     
+     textInput()
+      .should("have.value", "")
+      .type("Lorem ipsum")
+      .should("have.value", "Lorem ipsum");
+    authorInput()
+      .should("have.value", "")
+      .type("Casey Ray Harding")
+      .should("have.value", "Casey Ray Harding")
    })
+
+  it("the submit button enables when both inputs are filled out", () => {
+    authorInput().type("Casey");
+    textInput().type("Pal, chief, bud");
+    submitBtn().should("not.be.disabled");
+  })
+
+  it("the cancel button can reset the inputs and disable the submit button", () => {
+    authorInput().type("Casey");
+    textInput().type("Lorem ipsum");
+    cancelBtn().click();
+    textInput().should("have.value", "");
+    authorInput().should("have.value", "");
+    submitBtn().should("be.disabled");
+  })
  })
 })
