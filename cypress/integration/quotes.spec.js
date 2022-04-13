@@ -17,3 +17,15 @@ it("Sanity check to make sure tests work", () => {
     expect({}).not.to.equal({});
     expect({}).to.eql({});
 })
+
+it("The proper elements are showing", () => {
+    textInput().should("exist");
+    foobarInput().should("not.exist");
+    authorInput().should("exist");
+    submitBtn().should("exist");
+    cancelBtn().should("exist");
+
+    cy.contains("Submit Quote").should("exist");
+    cy.contains(/submit quote/i).should("exist");
+
+})
