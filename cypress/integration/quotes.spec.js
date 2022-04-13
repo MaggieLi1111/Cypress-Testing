@@ -1,3 +1,4 @@
+
 // write tests here
 describe("Quotes App", () => {
 
@@ -35,4 +36,13 @@ describe("Quotes App", () => {
             cy.url().should("include", "localhost");
         })
 
-        
+        it("submit button starts out disabled", () => {
+            submitBtn().should("be.disabled");
+        })
+
+        it("can type in the inputs", () => {
+            textInput()
+            .should("have.value", "")
+            .type("Lorem ipsum")
+            .should("have.value", "Lorem ipsum");
+        })
